@@ -12,15 +12,17 @@ import javax.swing.JTextField;
  * @author Gian
  */
 public class ChessGameController {
-    ChessGame modelo;
-    JTextArea resumePlayerWhite = ChessBoardPanelBlack.resumePlayerWhite;
-    JTextArea resumePlayerBlack = ChessBoardPanelBlack.resumePlayerBlack;
+    ChessGame modelo; //instancia globalmente un objeto de tipo ChessGame
+
+    //Estas tres variables tienen un modificador static que hace que se pueda accder a ellas sin una instancia de la clase, asi no se inicializa el constructor
+    private JTextArea resumePlayerWhite = ChessBoardPanelBlack.resumePlayerWhite;
+    private JTextArea resumePlayerBlack = ChessBoardPanelBlack.resumePlayerBlack;
     private JTextField[][] tablero = ChessBoardPanelBlack.tableroObj;
 
-    int turnCounter = 0;
+    private int turnCounter = 0; //Variable global que lleva la cuenta de los turnos al hacer click dos veces
 
-    private ArrayList<String> pieces = new ArrayList<>();
-    private ArrayList<Integer> savePlay = new ArrayList<>();
+    private ArrayList<String> pieces = new ArrayList<>(); //Matriz unidimencional que guadará las jugadas de cada jugador
+    private ArrayList<Integer> savePlay = new ArrayList<>(); //Matriz unidimensional que guarda las posiciones de salida y llegada de una pieza
     private final ArrayList<Long> time = new ArrayList<>();
     public final String[][] tableroAjedrez;
     private final char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
@@ -38,23 +40,24 @@ public class ChessGameController {
         modelo = new ChessGame();
     }
 
+    //3) Esta es la funcion que se encuentra en la otra case y se puede usar porque tiene el modificador de acceso de public
     public void verifyContent(JTextField content, String position) {
-        pieces.add(content.getText());
-        getPosition(position);
+        pieces.add(content.getText()); //Del jtextfuild ciclado obtendrá su contenido y lo agregará al arraylist pieces
+        getPosition(position); //Llamamos a la funcion getPosition
     }
 
     private void getPosition(String position) {
-        int[] coordinates = findCoordinates(position);
+        int[] coordinates = findCoordinates(position); //ver mas abajo xd
         if (coordinates != null) {
             long startTime = System.currentTimeMillis();
             time.add(startTime);
             System.out.println("Posición: (" + coordinates[0] + ", " + coordinates[1] + ")");
             savePlay.add(coordinates[0]);
-            savePlay.add(coordinates[1]);
+            savePlay.add(coordinates[1]);//guarda las coordenadas sea de salida o llegada
             turnCounter++;
 
             if (turnCounter == 2) {
-                processMovement();
+                processMovement();//esta fucion y con las que interactua hacen todo el trabajo sucio y por eso son privadas
                 reset();
             }
         } else {
@@ -129,7 +132,7 @@ public class ChessGameController {
             }
         }
         return null;
-    }
+    }//esta funcion busca la posicion de la pieza que se va a mover y retorna un arreglo con la fila y la columna
 
     private void resumePlayersMove(JTextArea window, String menssage) {
         window.append(menssage);
@@ -175,78 +178,11 @@ public class ChessGameController {
     private void intercambiarPorBancas() {
         cleanChessboard();
 
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H8);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H7);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H6);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H5);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H4);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H3);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H2);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H1);
-
+        for (int i = 0; i < tablero.length; i++) {
+            for (int j = 0; j < tablero[i].length; j++) {
+                ChessBoardPanelBlack.jPanel2.add(tablero[i][j]);
+            }
+        }
         ChessBoardPanelBlack.jPanel2.revalidate();
         ChessBoardPanelBlack.jPanel2.repaint();
 
@@ -254,79 +190,11 @@ public class ChessGameController {
 
     private void intercambiarPorNegras() {
         cleanChessboard();
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B1);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A1);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B2);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A2);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B3);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A3);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B4);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A4);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B5);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A5);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B6);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A6);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B7);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A7);
-
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.H8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.G8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.F8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.E8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.D8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.C8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.B8);
-        ChessBoardPanelBlack.jPanel2.add(ChessBoardPanelBlack.A8);
-
+        for (int i = tablero.length - 1; i >= 0; i--) {
+            for (int j = tablero[i].length - 1; j >= 0; j--) {
+                ChessBoardPanelBlack.jPanel2.add(tablero[i][j]);
+            }
+        }
         ChessBoardPanelBlack.jPanel2.revalidate();
         ChessBoardPanelBlack.jPanel2.repaint();
     }

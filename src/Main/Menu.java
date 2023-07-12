@@ -11,10 +11,6 @@ import Vista.ChessBoardPanelBlack;
  * @author Gian
  */
 public class Menu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Menu
-     */
     public Menu() {
         initComponents();
         this.setResizable(false);
@@ -36,6 +32,11 @@ public class Menu extends javax.swing.JFrame {
         btnAI.setText("Juega contra la IA");
         btnAI.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnAI.setBorderPainted(false);
+        btnAI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAIActionPerformed(evt);
+            }
+        });
 
         btnTwoPlayers.setBackground(new java.awt.Color(215, 58, 70));
         btnTwoPlayers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
@@ -43,6 +44,7 @@ public class Menu extends javax.swing.JFrame {
         btnTwoPlayers.setText("Dos Jugadores");
         btnTwoPlayers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnTwoPlayers.setBorderPainted(false);
+        btnTwoPlayers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTwoPlayers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTwoPlayersActionPerformed(evt);
@@ -56,12 +58,12 @@ public class Menu extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(btnAI, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(380, 380, 380)
                 .addComponent(btnTwoPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jLabel1)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btnAI, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,8 +71,8 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(300, 300, 300)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTwoPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAI, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnAI, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTwoPlayers, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -85,15 +87,18 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>                        
+    }                  
 
-    private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-        ChessBoardPanelBlack frame = new ChessBoardPanelBlack();
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Empiezan blancas");
-        frame.setVisible(true);
-    }                                             
+    private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        ChessBoardPanelBlack frame = new ChessBoardPanelBlack(); //1) crea un objeto de la clase que contiene el panel
+        this.setVisible(false); //this hace referecia a la ventana principal y lha hace invisible
+        JOptionPane.showMessageDialog(null, "Empiezan blancas");//Manda un mensaje de que empiezan las blancas
+        frame.setVisible(true); //muestra el panel
+    }
+    
+    private void btnAIActionPerformed(java.awt.event.ActionEvent evt) {
+        JOptionPane.showMessageDialog(null, "No pude conectarlo a la IA :'v");
+    }
 
     /**
      * @param args the command line arguments
