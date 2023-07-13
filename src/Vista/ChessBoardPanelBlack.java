@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.ChessGameController;
@@ -15,7 +11,7 @@ import javax.swing.JTextField;
 public final class ChessBoardPanelBlack extends javax.swing.JFrame {
 
     public static JTextField tableroObj[][];
-    ChessGameController controlador; //objeto de tipo ChessGameController(se crea de manera global)
+    ChessGameController controlador;
 
     public ChessBoardPanelBlack() {
         initComponents();
@@ -31,7 +27,7 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
             {A4, B4, C4, D4, E4, F4, G4, H4},
             {A3, B3, C3, D3, E3, F3, G3, H3},
             {A2, B2, C2, D2, E2, F2, G2, H2},
-            {A1, B1, C1, D1, E1, F1, G1, H1}};//inicializa una matriz de tipo JtextField, estas son las casillas del tablero
+            {A1, B1, C1, D1, E1, F1, G1, H1}};
         
         controlador = new ChessGameController();
     }
@@ -870,73 +866,64 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(30, 74));
         jPanel1.setLayout(new java.awt.GridLayout(0, 1));
 
-        jLabel5.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText(" 1");
-        jPanel1.add(jLabel5);
-
-        jLabel6.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText(" 2");
-        jPanel1.add(jLabel6);
-
-        jLabel8.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText(" 3");
-        jPanel1.add(jLabel8);
-
-        jLabel7.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText(" 4");
-        jPanel1.add(jLabel7);
-
-        jLabel9.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText(" 5");
-        jPanel1.add(jLabel9);
-
-        jLabel10.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText(" 6");
-        jPanel1.add(jLabel10);
+        jLabel12.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText(" 8");
+        jPanel1.add(jLabel12);
 
         jLabel11.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText(" 7");
         jPanel1.add(jLabel11);
 
-        jLabel12.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText(" 8");
-        jPanel1.add(jLabel12);
+        jLabel10.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText(" 6");
+        jPanel1.add(jLabel10);
+
+        jLabel9.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText(" 5");
+        jPanel1.add(jLabel9);
+
+        jLabel7.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText(" 4");
+        jPanel1.add(jLabel7);
+
+        jLabel8.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText(" 3");
+        jPanel1.add(jLabel8);
+
+        jLabel6.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText(" 2");
+        jPanel1.add(jLabel6);
+
+        jLabel5.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText(" 1");
+        jPanel1.add(jLabel5);
+
+
+
+
+
+
 
         jPanel3.setBackground(new java.awt.Color(122, 81, 49));
         jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
-        jLabel13.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("   H");
-        jPanel3.add(jLabel13);
+        jLabel20.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("   A");
+        jPanel3.add(jLabel20);
 
-        jLabel14.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("   G");
-        jPanel3.add(jLabel14);
-
-        jLabel15.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("   F");
-        jPanel3.add(jLabel15);
-
-        jLabel16.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("   E");
-        jPanel3.add(jLabel16);
-
-        jLabel17.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setText("   D");
-        jPanel3.add(jLabel17);
+        jLabel19.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("   B");
+        jPanel3.add(jLabel19);
 
         jLabel18.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
@@ -944,103 +931,122 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
         jLabel18.setPreferredSize(new java.awt.Dimension(30, 30));
         jPanel3.add(jLabel18);
 
-        jLabel19.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("   B");
-        jPanel3.add(jLabel19);
+        jLabel17.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("   D");
+        jPanel3.add(jLabel17);
 
-        jLabel20.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("   A");
-        jPanel3.add(jLabel20);
+        jLabel16.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("   E");
+        jPanel3.add(jLabel16);
+
+        jLabel15.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("   F");
+        jPanel3.add(jLabel15);
+
+        jLabel14.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("   G");
+        jPanel3.add(jLabel14);
+
+        jLabel13.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("   H");
+        jPanel3.add(jLabel13);
+
+
 
         jPanel5.setBackground(new java.awt.Color(122, 81, 49));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0));
-
-        jLabel29.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("   H");
-        jPanel5.add(jLabel29);
-
-        jLabel31.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("   G");
-        jPanel5.add(jLabel31);
-
-        jLabel32.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("   F");
-        jPanel5.add(jLabel32);
-
-        jLabel33.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("   E");
-        jPanel5.add(jLabel33);
-
-        jLabel34.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("   D");
-        jLabel34.setPreferredSize(new java.awt.Dimension(30, 30));
-        jPanel5.add(jLabel34);
-
-        jLabel35.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("   C");
-        jPanel5.add(jLabel35);
-
-        jLabel36.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("   B");
-        jPanel5.add(jLabel36);
 
         jLabel30.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("   A");
         jPanel5.add(jLabel30);
 
+        jLabel36.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel36.setText("   B");
+        jPanel5.add(jLabel36);
+
+        jLabel35.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel35.setText("   C");
+        jPanel5.add(jLabel35);
+        
+        jLabel34.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel34.setText("   D");
+        jLabel34.setPreferredSize(new java.awt.Dimension(30, 30));
+        jPanel5.add(jLabel34); 
+        
+        jLabel33.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setText("   E");
+        jPanel5.add(jLabel33);
+
+        jLabel32.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel32.setText("   F");
+        jPanel5.add(jLabel32);
+        
+        jLabel31.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("   G");
+        jPanel5.add(jLabel31);
+
+        jLabel29.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel29.setText("   H");
+        jPanel5.add(jLabel29);
+
+        //Panel que contiene los numeros de la derecha
         jPanel4.setBackground(new java.awt.Color(122, 81, 49));
         jPanel4.setPreferredSize(new java.awt.Dimension(30, 74));
         jPanel4.setLayout(new java.awt.GridLayout(0, 1));
 
-        jLabel21.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText(" 1");
-        jPanel4.add(jLabel21);
-
-        jLabel22.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText(" 2");
-        jPanel4.add(jLabel22);
-
-        jLabel23.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText(" 3");
-        jPanel4.add(jLabel23);
-
-        jLabel24.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText(" 4");
-        jPanel4.add(jLabel24);
-
-        jLabel25.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText(" 5");
-        jPanel4.add(jLabel25);
-
-        jLabel26.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText(" 6");
-        jPanel4.add(jLabel26);
+        jLabel28.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel28.setText(" 8");
+        jPanel4.add(jLabel28);
 
         jLabel27.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText(" 7");
         jPanel4.add(jLabel27);
 
-        jLabel28.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText(" 8");
-        jPanel4.add(jLabel28);
+        jLabel26.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText(" 6");
+        jPanel4.add(jLabel26);
+
+        jLabel25.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText(" 5");
+        jPanel4.add(jLabel25);        
+
+        jLabel24.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText(" 4");
+        jPanel4.add(jLabel24);
+
+        jLabel23.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText(" 3");
+        jPanel4.add(jLabel23);
+
+        jLabel22.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText(" 2");
+        jPanel4.add(jLabel22);
+
+        jLabel21.setFont(new java.awt.Font("Bahnschrift", 1, 24)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText(" 1");
+        jPanel4.add(jLabel21);
+
 
         jPanel10.setBackground(new java.awt.Color(122, 81, 49));
         jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(122, 81, 49), 2));
@@ -1547,12 +1553,11 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void H1MouseClicked(java.awt.event.MouseEvent evt) {
-        controlador.verifyContent(H1, "H1"); //2) haciendo uso del objeto controlador, se puede hacer uso de uno de sus metodo publicos
+        controlador.verifyContent(H1, "H1");
     }
-    //los 64 jtextfield tienen este metodo que se dispara en el evento MouseClicked
     private void G1MouseClicked(java.awt.event.MouseEvent evt) {
         controlador.verifyContent(G1, "G1");
     }
@@ -1564,12 +1569,12 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
         controlador.verifyContent(E1, "E1");
     }
 
-    private void D1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_D1MouseClicked
+    private void D1MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         controlador.verifyContent(D1, "D1");
     }//GEN-LAST:event_D1MouseClicked
 
-    private void C1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_C1MouseClicked
+    private void C1MouseClicked(java.awt.event.MouseEvent evt) {
         // TODO add your handling code here:
         controlador.verifyContent(C1, "C1");
     }//GEN-LAST:event_C1MouseClicked
@@ -2010,37 +2015,37 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
     public static javax.swing.JTextField caballoBlack;
     public static javax.swing.JTextField caballoWhite;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    public static javax.swing.JLabel jLabel10;
+    public static javax.swing.JLabel jLabel11;
+    public static javax.swing.JLabel jLabel12;
+    public static javax.swing.JLabel jLabel13;
+    public static javax.swing.JLabel jLabel14;
+    public static javax.swing.JLabel jLabel15;
+    public static javax.swing.JLabel jLabel16;
+    public static javax.swing.JLabel jLabel17;
+    public static javax.swing.JLabel jLabel18;
+    public static javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
+    public static javax.swing.JLabel jLabel20;
+    public static javax.swing.JLabel jLabel21;
+    public static javax.swing.JLabel jLabel22;
+    public static javax.swing.JLabel jLabel23;
+    public static javax.swing.JLabel jLabel24;
+    public static javax.swing.JLabel jLabel25;
+    public static javax.swing.JLabel jLabel26;
+    public static javax.swing.JLabel jLabel27;
+    public static  javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JLabel jLabel29;
+    public static javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
+    public static javax.swing.JLabel jLabel30;
+    public static javax.swing.JLabel jLabel31;
+    public static javax.swing.JLabel jLabel32;
+    public static javax.swing.JLabel jLabel33;
+    public static javax.swing.JLabel jLabel34;
+    public static javax.swing.JLabel jLabel35;
+    public static javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -2054,19 +2059,19 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel6;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel jLabel8;
+    public static javax.swing.JLabel jLabel9;
+    public static javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     public static javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
+    public static javax.swing.JPanel jPanel3;
+    public static javax.swing.JPanel jPanel4;
+    public static javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
