@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.ChessGame;
-import Vista.ChessBoardPanelBlack;
+import Vista.ChessBoardPanel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -14,9 +14,9 @@ import javax.swing.JTextField;
 public class ChessGameController {
     ChessGame modelo;
 
-    private JTextArea resumePlayerWhite = ChessBoardPanelBlack.resumePlayerWhite;
-    private JTextArea resumePlayerBlack = ChessBoardPanelBlack.resumePlayerBlack;
-    private JTextField[][] tablero = ChessBoardPanelBlack.tableroObj;
+    private JTextArea resumePlayerWhite = ChessBoardPanel.resumePlayerWhite;
+    private JTextArea resumePlayerBlack = ChessBoardPanel.resumePlayerBlack;
+    private JTextField[][] tablero = ChessBoardPanel.tableroObj;
 
     private int turnCounter = 0;
 
@@ -25,6 +25,7 @@ public class ChessGameController {
     private final ArrayList<Long> time = new ArrayList<>();
     public final String[][] tableroAjedrez;
     private final char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+    private String finalPositionString;
 
     public ChessGameController() {
         this.tableroAjedrez = new String[][] {
@@ -84,6 +85,8 @@ public class ChessGameController {
 
         boolean isBlack = isBlackPiece(piece);
 
+        finalPositionString = targetLetterRow + finalTargetLetterColumn;
+
         validateMovementWhiteOrBlack(piece, initialRow, initialColumn, targetRow, targetColumn);
 
         resumePlayersMove(isBlack ? this.resumePlayerBlack : this.resumePlayerWhite,
@@ -139,7 +142,7 @@ public class ChessGameController {
     private void validateMovementWhiteOrBlack(String piece, int startRow, int startCol, int targetRow, int targetCol) {
         switch (piece) {
             case "♙", "♟" ->
-                modelo.pawnValidationMove(startRow, startCol, targetRow, targetCol, pieces.get(0), pieces.get(1));
+                modelo.pawnValidationMove(startRow, startCol, targetRow, targetCol, pieces.get(0), pieces.get(1), finalPositionString);
             case "♖", "♜" ->
                 modelo.rookValidationMove(startRow, startCol, targetRow, targetCol, pieces.get(0), pieces.get(1));
             case "♘", "♞" ->
@@ -178,102 +181,102 @@ public class ChessGameController {
 
         for (int i = 0; i < tablero.length; i++) {
             for (int j = 0; j < tablero[i].length; j++) {
-                ChessBoardPanelBlack.jPanel2.add(tablero[i][j]);
+                ChessBoardPanel.jPanel2.add(tablero[i][j]);
             }
         }
-        ChessBoardPanelBlack.jPanel2.revalidate();
-        ChessBoardPanelBlack.jPanel2.repaint();
+        ChessBoardPanel.jPanel2.revalidate();
+        ChessBoardPanel.jPanel2.repaint();
 
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel12);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel11);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel10);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel9);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel7);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel8);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel6);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel5);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel12);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel11);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel10);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel9);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel7);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel8);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel6);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel5);
 
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel28);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel27);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel26);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel25);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel24);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel23);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel22);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel21);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel28);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel27);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel26);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel25);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel24);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel23);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel22);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel21);
 
 
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel20);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel19);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel18);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel17);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel16);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel15);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel14);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel13);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel20);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel19);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel18);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel17);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel16);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel15);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel14);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel13);
 
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel30);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel36);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel35);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel34);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel33);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel32);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel31);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel29);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel30);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel36);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel35);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel34);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel33);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel32);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel31);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel29);
     }
 
     private void intercambiarPorNegras() {
         cleanChessboard();
         for (int i = tablero.length - 1; i >= 0; i--) {
             for (int j = tablero[i].length - 1; j >= 0; j--) {
-                ChessBoardPanelBlack.jPanel2.add(tablero[i][j]);
+                ChessBoardPanel.jPanel2.add(tablero[i][j]);
             }
         }
-        ChessBoardPanelBlack.jPanel2.revalidate();
-        ChessBoardPanelBlack.jPanel2.repaint();
+        ChessBoardPanel.jPanel2.revalidate();
+        ChessBoardPanel.jPanel2.repaint();
 
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel5);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel6);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel8);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel7);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel9);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel10);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel11);
-        ChessBoardPanelBlack.jPanel1.add(ChessBoardPanelBlack.jLabel12);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel5);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel6);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel8);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel7);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel9);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel10);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel11);
+        ChessBoardPanel.jPanel1.add(ChessBoardPanel.jLabel12);
 
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel21);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel22);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel23);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel24);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel25);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel26);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel27);
-        ChessBoardPanelBlack.jPanel4.add(ChessBoardPanelBlack.jLabel28);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel21);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel22);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel23);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel24);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel25);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel26);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel27);
+        ChessBoardPanel.jPanel4.add(ChessBoardPanel.jLabel28);
 
 
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel13);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel14);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel15);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel16);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel17);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel18);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel19);
-        ChessBoardPanelBlack.jPanel3.add(ChessBoardPanelBlack.jLabel20);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel13);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel14);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel15);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel16);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel17);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel18);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel19);
+        ChessBoardPanel.jPanel3.add(ChessBoardPanel.jLabel20);
 
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel29);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel31);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel32);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel33);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel34);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel35);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel36);
-        ChessBoardPanelBlack.jPanel5.add(ChessBoardPanelBlack.jLabel30);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel29);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel31);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel32);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel33);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel34);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel35);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel36);
+        ChessBoardPanel.jPanel5.add(ChessBoardPanel.jLabel30);
     }
 
     private void cleanChessboard() {
         for (JTextField[] fila : tablero) {
             for (JTextField casilla : fila) {
-                ChessBoardPanelBlack.jPanel2.remove(casilla);
+                ChessBoardPanel.jPanel2.remove(casilla);
             }
         }
     }

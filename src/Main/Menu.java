@@ -1,10 +1,9 @@
-
 package Main;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import Vista.ChessBoardPanelBlack;
+import Vista.ChessBoardPanel;
 
 /**
  *
@@ -90,10 +89,10 @@ public class Menu extends javax.swing.JFrame {
     }                  
 
     private void btnTwoPlayersActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        ChessBoardPanelBlack frame = new ChessBoardPanelBlack(); //1) crea un objeto de la clase que contiene el panel
-        this.setVisible(false); //this hace referecia a la ventana principal y lha hace invisible
-        JOptionPane.showMessageDialog(null, "Empiezan blancas");//Manda un mensaje de que empiezan las blancas
-        frame.setVisible(true); //muestra el panel
+        ChessBoardPanel xBoardPanel = new ChessBoardPanel();
+        this.setVisible(false); 
+        JOptionPane.showMessageDialog(null, "Empiezan blancas");
+        xBoardPanel.setVisible(true); 
     }
     
     private void btnAIActionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +100,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * @param args
      */
     public static void main(String args[]) {
         try {
@@ -121,7 +120,6 @@ public class Menu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu().setVisible(true);

@@ -1,7 +1,8 @@
 
 package Modelo;
 
-import Vista.ChessBoardPanelBlack;
+import Vista.ChessBoardPanel;
+import Vista.Coronation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import javax.swing.JTextField;
  * @author Gian
  */
 public class ChessGame {
-    private JTextField[][] tablero = ChessBoardPanelBlack.tableroObj;
+    private JTextField[][] tablero = ChessBoardPanel.tableroObj;
     private final Map<String, Integer> pieceCounters = new HashMap<>();
 
     public ChessGame() {
@@ -29,14 +30,22 @@ public class ChessGame {
         pieceCounters.put("♛", 0);
     }
 
-    public void pawnValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece, String piece2) {
+    public void pawnValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
+            String piece2, String finalPositionString) {
         int rowDiff = Math.abs(targetRow - startRow);
         int colDiff = Math.abs(targetCol - startCol);
         String pieceLocal = piece;
-    
+
         if (colDiff == 0 && rowDiff == 1) {
             if (tablero[targetRow][targetCol].getText().isEmpty()) {
                 moveIcon(tablero[startRow][startCol], tablero[targetRow][targetCol], pieceLocal);
+                if (isCoronation(piece, finalPositionString)) {
+                    Coronation frame = new Coronation();
+                    frame.setVisible(true);
+                    frame.setResizable(false);
+                    frame.setLocationRelativeTo(null);
+                    //fataron algunas cosillas
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "No puedes moverte a esa casilla, hay una pieza en el camino");
             }
@@ -47,6 +56,12 @@ public class ChessGame {
                 } else {
                     moveIcon(tablero[startRow][startCol], tablero[targetRow][targetCol], piece);
                     upStagePiecesCaptured(piece2);
+                    if (isCoronation(piece, finalPositionString)) {
+                        Coronation frame = new Coronation();
+                        frame.setVisible(true);
+                        frame.setResizable(false);
+                        frame.setLocationRelativeTo(null);
+                    }
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "No puedes moverte a esa casilla, no hay una pieza para capturar");
@@ -55,7 +70,6 @@ public class ChessGame {
             JOptionPane.showMessageDialog(null, "Movimiento inválido para el peón");
         }
     }
-    
 
     // moviento del caballo
     public void knightValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
@@ -82,18 +96,19 @@ public class ChessGame {
     }
 
     // movimiento del alfil
-    public void bishopValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece, String piece2) {
+    public void bishopValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
+            String piece2) {
         int rowDiff = Math.abs(targetRow - startRow);
         int colDiff = Math.abs(targetCol - startCol);
-    
+
         if (rowDiff == colDiff) {
             int rowDirection = (targetRow > startRow) ? 1 : -1;
             int colDirection = (targetCol > startCol) ? 1 : -1;
-    
+
             int row = startRow + rowDirection;
             int col = startCol + colDirection;
             boolean hasObstacle = false;
-    
+
             while (row != targetRow && col != targetCol) {
                 if (!tablero[row][col].getText().isEmpty()) {
                     hasObstacle = true;
@@ -102,7 +117,7 @@ public class ChessGame {
                 row += rowDirection;
                 col += colDirection;
             }
-    
+
             if (hasObstacle) {
                 JOptionPane.showMessageDialog(null, "No puedes saltar por encima de otras piezas");
             } else {
@@ -121,21 +136,21 @@ public class ChessGame {
             JOptionPane.showMessageDialog(null, "Movimiento inválido para el alfil");
         }
     }
-    
 
     // movimiento de la torre
-    public void rookValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece, String piece2) {
+    public void rookValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
+            String piece2) {
         boolean isHorizontalMove = startRow == targetRow;
         boolean isVerticalMove = startCol == targetCol;
-    
+
         if (isHorizontalMove || isVerticalMove) {
             int minRow = Math.min(startRow, targetRow);
             int maxRow = Math.max(startRow, targetRow);
             int minCol = Math.min(startCol, targetCol);
             int maxCol = Math.max(startCol, targetCol);
-    
+
             boolean hasObstacle = false;
-    
+
             if (isHorizontalMove) {
                 for (int col = minCol + 1; col < maxCol; col++) {
                     if (!tablero[startRow][col].getText().isEmpty()) {
@@ -169,22 +184,22 @@ public class ChessGame {
             JOptionPane.showMessageDialog(null, "Movimiento inválido para la torre");
         }
     }
-    
 
     // movimiento de la reina
-    public void queenValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece, String piece2) {
+    public void queenValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
+            String piece2) {
         boolean isHorizontalOrVertical = (startRow == targetRow) || (startCol == targetCol);
         boolean isDiagonal = (Math.abs(startRow - targetRow) == Math.abs(startCol - targetCol));
-    
+
         if (isHorizontalOrVertical || isDiagonal) {
-    
+
             int rowDirection = (targetRow > startRow) ? 1 : (targetRow < startRow) ? -1 : 0;
             int colDirection = (targetCol > startCol) ? 1 : (targetCol < startCol) ? -1 : 0;
-    
+
             int row = startRow + rowDirection;
             int col = startCol + colDirection;
             boolean hasObstacle = false;
-    
+
             while (row != targetRow || col != targetCol) {
                 if (!tablero[row][col].getText().isEmpty()) {
                     hasObstacle = true;
@@ -193,7 +208,7 @@ public class ChessGame {
                 row += rowDirection;
                 col += colDirection;
             }
-    
+
             if (hasObstacle) {
                 JOptionPane.showMessageDialog(null, "No puedes saltar por encima de otras piezas");
             } else {
@@ -212,11 +227,11 @@ public class ChessGame {
             JOptionPane.showMessageDialog(null, "Movimiento inválido para la reina");
         }
     }
-    
 
     // movimiento del rey
-    public void kingValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece, String piece2) {
-        int rowDiff = Math.abs(startRow - targetRow );
+    public void kingValidationMove(int startRow, int startCol, int targetRow, int targetCol, String piece,
+            String piece2) {
+        int rowDiff = Math.abs(startRow - targetRow);
         int colDiff = Math.abs(startCol - targetCol);
 
         if (rowDiff <= 1 && colDiff <= 1) {
@@ -272,25 +287,38 @@ public class ChessGame {
         pieceCounters.put(capturedPiece, currentCount);
         switch (capturedPiece) {
             case "♙" ->
-                ChessBoardPanelBlack.peonWhite.setText(" " + currentCount);
+                ChessBoardPanel.peonWhite.setText(" " + currentCount);
             case "♟" ->
-                ChessBoardPanelBlack.peonBlack.setText(" " + currentCount);
+                ChessBoardPanel.peonBlack.setText(" " + currentCount);
             case "♖" ->
-                ChessBoardPanelBlack.torreWhite.setText(" " + currentCount);
+                ChessBoardPanel.torreWhite.setText(" " + currentCount);
             case "♜" ->
-                ChessBoardPanelBlack.torreBlack.setText(" " + currentCount);
+                ChessBoardPanel.torreBlack.setText(" " + currentCount);
             case "♘" ->
-                ChessBoardPanelBlack.caballoWhite.setText(" " + currentCount);
+                ChessBoardPanel.caballoWhite.setText(" " + currentCount);
             case "♞" ->
-                ChessBoardPanelBlack.caballoBlack.setText(" " + currentCount);
+                ChessBoardPanel.caballoBlack.setText(" " + currentCount);
             case "♗" ->
-                ChessBoardPanelBlack.alfilWhite.setText(" " + currentCount);
+                ChessBoardPanel.alfilWhite.setText(" " + currentCount);
             case "♝" ->
-                ChessBoardPanelBlack.alfilBlack.setText(" " + currentCount);
+                ChessBoardPanel.alfilBlack.setText(" " + currentCount);
             case "♕" ->
-                ChessBoardPanelBlack.reinaWhite.setText(" " + currentCount);
+                ChessBoardPanel.reinaWhite.setText(" " + currentCount);
             case "♛" ->
-                ChessBoardPanelBlack.reinaBlack.setText(" " + currentCount);
+                ChessBoardPanel.reinaBlack.setText(" " + currentCount);
         }
     }
+
+    private boolean isCoronation(String piece, String position) {
+        boolean isBlack = piece.startsWith("♟");
+        boolean isWhite = piece.startsWith("♙");
+
+        if (isBlack && position.charAt(1) == '1') {
+            return true;
+        } else if (isWhite && position.charAt(1) == '8') {
+            return true;
+        }
+        return false;
+    }
+
 }

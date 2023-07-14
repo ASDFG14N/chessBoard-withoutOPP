@@ -8,12 +8,12 @@ import javax.swing.JTextField;
  *
  * @author Gian
  */
-public final class ChessBoardPanelBlack extends javax.swing.JFrame {
+public final class ChessBoardPanel extends javax.swing.JFrame {
 
     public static JTextField tableroObj[][];
     ChessGameController controlador;
 
-    public ChessBoardPanelBlack() {
+    public ChessBoardPanel() {
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -1926,19 +1926,19 @@ public final class ChessBoardPanelBlack extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChessBoardPanelBlack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChessBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChessBoardPanelBlack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChessBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChessBoardPanelBlack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChessBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChessBoardPanelBlack.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChessBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ChessBoardPanelBlack frame = new ChessBoardPanelBlack();
+                ChessBoardPanel frame = new ChessBoardPanel();
                 frame.setVisible(true);
 
             }
