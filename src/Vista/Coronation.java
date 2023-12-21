@@ -1,7 +1,5 @@
 package Vista;
 
-import Modelo.ChessGame;
-
 /**
  *
  * @author Gian
